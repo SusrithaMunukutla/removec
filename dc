@@ -1,1 +1,6 @@
 docker ps -a -f status=exited | grep -v '\_volume *$'| awk '{if(NR>1) print $1}' | xargs -r docker rm
+
+
+curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicate -d ' {"source": "http://localhost:5984/sensornew", "target": "http://52.67.20.14:4985/sync_gateway", "create_target": true, "continuous": true} '
+
+
