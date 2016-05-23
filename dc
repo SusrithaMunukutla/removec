@@ -4,3 +4,4 @@ docker ps -a -f status=exited | grep -v '\_volume *$'| awk '{if(NR>1) print $1}'
 curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicate -d ' {"source": "http://localhost:5984/sensornew", "target": "http://52.67.20.14:4985/sync_gateway", "create_target": true, "continuous": true} '
 
 
+sudo docker run -e CATTLE_AGENT_IP=172.17.0.3 -d --privileged -v /var/run/docker.sock:/var/run/docker.sock rancher/agent:v0.7.9 http://172.17.0.3:8080/v1/scripts/DB121CFBA836F9493653:1434085200000:2ZOwUMd6fIzz44efikGhBP1veo
